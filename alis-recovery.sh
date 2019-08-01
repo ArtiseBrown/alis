@@ -224,17 +224,17 @@ function prepare_partition() {
 
 function configure_network() {
     if [ -n "$WIFI_INTERFACE" ]; then
-        cp /etc/netctl/examples/wireless-wpa /etc/netctl
-      	chmod 600 /etc/netctl
+        cp /etc/netctl/examples/wireless-wpa /etc/netctl/wireless-wpa
+      	chmod 600 /etc/netctl/wireless-wpa
 
-      	sed -i 's/^Interface=.*/Interface='"$WIFI_INTERFACE"'/' /etc/netctl
-      	sed -i 's/^ESSID=.*/ESSID='"$WIFI_ESSID"'/' /etc/netctl
-      	sed -i 's/^Key=.*/Key='\''$WIFI_KEY'\''/' /etc/netctl
+      	sed -i 's/^Interface=.*/Interface='"$WIFI_INTERFACE"'/' /etc/netctl/wireless-wpa
+      	sed -i 's/^ESSID=.*/ESSID='"$WIFI_ESSID"'/' /etc/netctl/wireless-wpa
+      	sed -i 's/^Key=.*/Key='\''$WIFI_KEY'\''/' /etc/netctl/wireless-wpa
       	if [ "$WIFI_HIDDEN" == "true" ]; then
-      		sed -i 's/^#Hidden=.*/Hidden=yes/' /etc/netctl
+      		sed -i 's/^#Hidden=.*/Hidden=yes/' /etc/netctl/wireless-wpa
       	fi
 
-      	netctl start wireless-wpa
+    #  	netctl start wireless-wpa
     fi
 
     ping -c 5 $PING_HOSTNAME
