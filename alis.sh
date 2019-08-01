@@ -311,7 +311,7 @@ function configure_network() {
       		sed -i 's/^#Hidden=.*/Hidden=yes/' /etc/netctl/wireless-wpa
       	fi
 
-      	netctl start wireless-wpa
+#      	netctl start wireless-wpa
     fi
 
     ping -c 5 $PING_HOSTNAME
@@ -839,7 +839,7 @@ function create_user() {
 
 	USER_NAME=$1
 	USER_PASSWORD=$2
-    arch-chroot /mnt useradd -m -G wheel,storage,optical -s /bin/bash $USER_NAME
+    arch-chroot /mnt useradd -m -G wheel,storage,optical -s /bin/fish $USER_NAME
     printf "$USER_PASSWORD\n$USER_PASSWORD" | arch-chroot /mnt passwd $USER_NAME
 }
 
