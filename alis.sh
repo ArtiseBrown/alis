@@ -311,7 +311,7 @@ function configure_network() {
       		sed -i 's/^#Hidden=.*/Hidden=yes/' /etc/netctl/wireless-wpa
       	fi
 
-#      	netctl start wireless-wpa
+      	netctl start wireless-wpa
     fi
 
     ping -c 5 $PING_HOSTNAME
